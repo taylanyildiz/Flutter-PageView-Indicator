@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class IndicatorPageView extends StatefulWidget {
@@ -25,6 +27,7 @@ class _IndicatorPageViewState extends State<IndicatorPageView>
   PageController _pageController;
   AnimationController controller;
   Animation animation;
+  int currentPage = 0;
 
   @override
   void initState() {
@@ -44,6 +47,15 @@ class _IndicatorPageViewState extends State<IndicatorPageView>
     )..addListener(() {
         setState(() {});
       });
+    Timer.periodic(Duration(seconds: 5), (timer) {
+      if (currentPage < widget.itemCount - 1) {
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+      _pageController.animateToPage(currentPage,
+          duration: Duration(milliseconds: 600), curve: Curves.linear);
+    });
   }
 
   Widget pageViewWidget(index) {
