@@ -71,7 +71,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             Align(
               alignment: Alignment.topRight,
               child: Container(
-                height: 15.0,
+                color: Colors.blue,
+                height: 20.0,
                 width: 100.0,
                 child: CustomPaint(
                   painter: IndicatorPaint(
@@ -129,7 +130,7 @@ class IndicatorPaint extends CustomPainter {
         super();
   @override
   void paint(Canvas canvas, Size size) {
-    final Offset offset = Offset(0.0, 0.0);
+    final Offset offset = Offset(radius, size.height / 2);
     final double totalWidth =
         (pageCount * 2 * radius) - (pageCount - 1) * space;
     _drawBackIndicator(canvas, offset, totalWidth);
@@ -155,9 +156,9 @@ class IndicatorPaint extends CustomPainter {
     canvas.drawRRect(
       RRect.fromLTRBR(
         indicatorLeftX + thickness,
-        -radius,
+        0,
         indicatorRightX + thickness,
-        radius,
+        2 * radius,
         Radius.circular(radius),
       ),
       indicatorPaint,
