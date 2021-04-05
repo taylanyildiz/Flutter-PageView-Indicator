@@ -11,9 +11,9 @@ class IndicatorPageView extends StatefulWidget {
     Key key,
     @required this.builder,
     @required this.itemCount,
-    @required this.indicatorColor,
-    @required this.indicatorBackColor,
-    @required this.pageViewColor,
+    this.indicatorColor,
+    this.indicatorBackColor,
+    this.pageViewColor,
   }) : super(key: key);
 
   @override
